@@ -1,3 +1,22 @@
 Ahmed Shaikh
 ashaikh3@binghamton.edu
 B00329264
+
+
+Templated Deque that is templated using the preprocessor. To invoke the Deque "class", you must:
+
+add the line:
+Deque_Define(VariableType)
+
+before the main function. There is no semicolon at the end of the line. Then you must define a comparison function,
+even for primitive types. The Deque is declared and instantiated in the following manner:
+
+Deque_VariableType deq(&deq, comparison_function);
+
+See the test for examples.
+
+
+FUTURE PLAN:
+
+As of right now, the Deque runs in C++ only due to the use of iostream functions. Plan to make it C exclusive, as it
+would create a templated C class (very useful).
