@@ -6,19 +6,15 @@
 #include <assert.h>
 #include <string.h>
 #include <iostream>
-#include <typeinfo>
 
-// Need to figure out how to solve the iterator mutation problem.
-// Also need to insert checks to see if the iterator has been incremented outside the bounds of the array.
-// Still dont know what to do with the ##Class_less_by_id
+/* The iterators have undefined behavior if they are created and then the Deque is modified.
+   An iterator must be recreated each time the deque is modified. */
 
 #define Deque_DEFINE(Class) 															\
 																						\
 typedef struct Deque_##Class Deque_##Class; 											\
 typedef struct Deque_##Class##_Iterator Deque_##Class##_Iterator; 						\
 					 																	\
-/* First things first, create a dynamically resizing array.  The Deque will have to use \
-   dynamically resizing array within it. */												\
 struct Deque_##Class																	\
 {																						\
 	Class *buffer; 																		\
@@ -72,20 +68,8 @@ back_index(const Deque_##Class *deq) 													\
 	else return deq->tail - 1; 															\
 }																						\
 																						\
-/*																						\
-void print_elements(Deque_##Class *deq)													\
-{																						\
-	int i = front_index(deq);															\
-	while(i!= deq->tail)																\
-	{																					\
-		std::cout << deq->buffer[i] << ", "; 											\
-		if(i == deq->capacity - 1) i = 0;												\
-		else i++;																		\
-	}																					\
-	std::cout << std::endl;																\
-} */																					\
 																						\
-/* Need to redo this with the iterator later. <-- CHANGE NEEDED	*/						\
+/* Need to redo this with the iterator later. */										\
 void																					\
 Deque_realloc(Deque_##Class *deq)														\
 {																						\
