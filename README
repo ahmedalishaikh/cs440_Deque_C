@@ -11,4 +11,4 @@ before the main function. There is no semicolon at the end of the line. Then you
 
 Deque_VariableType deq(&deq, comparison_function);
 
-See the test functions for examples.
+See the test functions for examples. The test functions compare my deque with the standard c++ deque to ensure correctness.
